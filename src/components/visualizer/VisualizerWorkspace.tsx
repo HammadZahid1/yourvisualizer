@@ -1,4 +1,6 @@
+import { WordGraph } from '@/components/graph/WordGraph';
 import { Panel } from '@/components/ui/Panel';
+import { exportGraphPng } from '@/lib/export/image';
 import { TextEditor } from './TextEditor';
 import type { useVisualizerState } from '@/hooks/useVisualizerState';
 import './VisualizerWorkspace.css';
@@ -33,12 +35,16 @@ export function VisualizerWorkspace({ state }: VisualizerWorkspaceProps) {
         <Panel
           className="workspace-graph"
           eyebrow="02 / Visualization"
-          title="Relationship graph"
+          title="Co-occurrence network"
           padded={false}
         >
-          <div className="workspace-graph__placeholder">
-            <span className="mono">Graph engine initializing…</span>
-          </div>
+          <WordGraph
+            graph={state.analysis?.graph ?? { nodes: [], links: [] }}
+            selectedWord={state.selectedWord}
+            onSelectWord={state.setSelectedWord}
+            onExportImage={(svg) => void exportGraphPng(svg)}
+            isAnalyzing={state.isAnalyzing}
+          />
         </Panel>
 
         <Panel className="workspace-insights" eyebrow="03 / Insights" title="Signal readout" padded={false}>
