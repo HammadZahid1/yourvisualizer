@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AppShell } from './components/layout/AppShell';
 import { Header } from './components/navigation/Header';
 import { VisualizerWorkspace } from './components/visualizer/VisualizerWorkspace';
@@ -9,9 +9,20 @@ import { SAMPLES } from './data/samples';
 import { useVisualizerState } from './hooks/useVisualizerState';
 import type { ViewId } from './types';
 
+const PAGE_TITLES: Record<ViewId, string> = {
+  overview: 'See what your words are made of',
+  visualizer: 'Visualizer',
+  explore: 'Explore',
+  about: 'About',
+};
+
 export default function App() {
   const [view, setView] = useState<ViewId>('overview');
   const visualizer = useVisualizerState();
+
+  useEffect(() => {
+    document.title = `${PAGE_TITLES[view]} — YourVisualizer`;
+  }, [view]);
 
   const openDemo = () => {
     const demo = SAMPLES[1] ?? SAMPLES[0]!;
