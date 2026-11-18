@@ -101,6 +101,16 @@
   opacity: 0.17;
 }
 
+.word-graph__node:focus {
+  outline: none;
+}
+
+.word-graph__node:focus-visible .word-graph__node-core {
+  stroke: var(--accent-cyan);
+  stroke-width: 2.5px;
+  fill-opacity: 1;
+}
+
 .word-graph__label {
   fill: rgba(226, 236, 245, 0.9);
   font-family: var(--font-mono);

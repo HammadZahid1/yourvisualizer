@@ -15,6 +15,14 @@ interface VisualizerWorkspaceProps {
 export function VisualizerWorkspace({ state }: VisualizerWorkspaceProps) {
   return (
     <div className="workspace-page">
+      <div className="visually-hidden" role="status" aria-live="polite">
+        {state.isAnalyzing
+          ? 'Analyzing text locally.'
+          : state.analysis
+            ? `Analysis complete: ${state.analysis.statistics.words} words, ${state.analysis.graph.nodes.length} keywords.`
+            : 'No analysis yet.'}
+      </div>
+
       <div className="workspace-page__intro">
         <div>
           <span className="eyebrow">Analysis workspace</span>

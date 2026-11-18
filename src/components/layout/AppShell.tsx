@@ -10,6 +10,9 @@ interface AppShellProps {
 export function AppShell({ header, children }: AppShellProps) {
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <BackgroundField />
       <div className="app-shell__grid" aria-hidden="true" />
       {header}

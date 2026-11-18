@@ -168,7 +168,15 @@
 }
 
 .text-editor__analyze {
-  margin: var(--space-2) var(--space-5) var(--space-5);
+  margin: var(--space-2) var(--space-5) 0;
   width: calc(100% - var(--space-10));
+  flex: none;
+}
+
+.text-editor__shortcut {
+  padding: var(--space-2) var(--space-5) var(--space-4);
+  color: var(--text-muted);
+  font-size: 0.5625rem;
+  text-align: center;
   flex: none;
 }

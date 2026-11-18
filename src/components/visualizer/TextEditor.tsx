@@ -57,6 +57,12 @@ export function TextEditor({
           placeholder={PLACEHOLDER}
           spellCheck={false}
           aria-label="Text to analyze"
+          onKeyDown={(event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+              event.preventDefault();
+              if (canAnalyze) onAnalyze();
+            }
+          }}
         />
         {!text && (
           <div className="text-editor__placeholder-icon" aria-hidden="true">
@@ -113,6 +119,7 @@ export function TextEditor({
       >
         {isAnalyzing ? 'Processing locally…' : 'Analyze Text'}
       </Button>
+      <p className="text-editor__shortcut mono">Ctrl / ⌘ + Enter to analyze</p>
     </section>
   );
 }
