@@ -28,6 +28,7 @@ interface WordGraphProps {
   onSelectWord: (word: string | null) => void;
   onExportImage: (svg: SVGSVGElement | null) => void;
   isAnalyzing?: boolean;
+  hasAnalysis?: boolean;
 }
 
 function hashWord(value: string): number {
@@ -45,6 +46,7 @@ export function WordGraph({
   onSelectWord,
   onExportImage,
   isAnalyzing = false,
+  hasAnalysis = false,
 }: WordGraphProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -228,9 +230,11 @@ export function WordGraph({
           <span className="word-graph__empty-icon">
             <Network size={30} strokeWidth={1.2} aria-hidden="true" />
           </span>
-          <h3>Waiting for words</h3>
+          <h3>{hasAnalysis ? 'No keywords extracted' : 'Waiting for words'}</h3>
           <p className="muted">
-            Add text and run an analysis to see its co-occurrence network appear here.
+            {hasAnalysis
+              ? 'The text was analysed, but no content words qualified after stop-word filtering. Try a longer or more varied passage.'
+              : 'Add text and run an analysis to see its co-occurrence network appear here.'}
           </p>
           <span className="mono word-graph__empty-tag">No data · no invention</span>
         </div>

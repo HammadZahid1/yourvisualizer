@@ -56,6 +56,7 @@ export function VisualizerWorkspace({ state }: VisualizerWorkspaceProps) {
             onSelectWord={state.setSelectedWord}
             onExportImage={(svg) => void exportGraphPng(svg)}
             isAnalyzing={state.isAnalyzing}
+            hasAnalysis={Boolean(state.analysis)}
           />
         </Panel>
 

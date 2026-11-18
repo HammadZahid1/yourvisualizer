@@ -24,11 +24,20 @@ export function NodeDetails({ analysis, word, onSelect }: NodeDetailsProps) {
       .filter((token) => token.normalized === word)
       .slice(0, 3)
       .map((token) => {
-        const before = analysis.text.slice(Math.max(0, token.start - 42), token.start).replace(/\s+/g, ' ');
-        const after = analysis.text
+        const beforeText = analysis.text
+          .slice(Math.max(0, token.start - 42), token.start)
+          .replace(/\s+/g, ' ')
+          .trim();
+        const afterText = analysis.text
           .slice(token.end, Math.min(analysis.text.length, token.end + 42))
-          .replace(/\s+/g, ' ');
-        return { before, after };
+          .replace(/\s+/g, ' ')
+          .trim();
+        return {
+          before: beforeText ? `…${beforeText} ` : '',
+          after: afterText
+            ? `${/^[.,!?;:)\]]/.test(afterText) ? '' : ' '}${afterText}…`
+            : '',
+        };
       });
 
     return { node, connections, occurrences };
@@ -93,9 +102,9 @@ export function NodeDetails({ analysis, word, onSelect }: NodeDetailsProps) {
           <ul className="node-details__occurrences">
             {occurrences.map((occurrence, index) => (
               <li key={index}>
-                {occurrence.before && <span>…{occurrence.before} </span>}
+                {occurrence.before && <span>{occurrence.before}</span>}
                 <mark>{word}</mark>
-                {occurrence.after && <span> {occurrence.after}…</span>}
+                {occurrence.after && <span>{occurrence.after}</span>}
               </li>
             ))}
           </ul>
