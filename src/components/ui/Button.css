@@ -1,0 +1,115 @@
+.ui-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel);
+  color: var(--text-primary);
+  font-weight: 550;
+  font-size: var(--text-small);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.ui-button:hover:not(:disabled) {
+  background: var(--bg-panel-raised);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.ui-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ui-button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.ui-button--sm {
+  height: 30px;
+  padding: 0 var(--space-3);
+  font-size: 0.75rem;
+  border-radius: var(--radius-xs);
+}
+
+.ui-button--md {
+  height: 38px;
+  padding: 0 var(--space-4);
+}
+
+.ui-button--lg {
+  height: 48px;
+  padding: 0 var(--space-6);
+  font-size: var(--text-body);
+  border-radius: var(--radius-md);
+}
+
+.ui-button--full {
+  width: 100%;
+}
+
+.ui-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.ui-button__icon svg {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.ui-button--primary {
+  background: linear-gradient(180deg, #5ce8fb 0%, #34c7e4 100%);
+  border-color: rgba(72, 221, 245, 0.5);
+  color: #03151b;
+  font-weight: 650;
+  box-shadow:
+    0 0 0 1px rgba(72, 221, 245, 0.12),
+    0 8px 26px rgba(72, 221, 245, 0.18);
+}
+
+.ui-button--primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, #7df0ff 0%, #43d4f0 100%);
+  border-color: rgba(72, 221, 245, 0.7);
+  box-shadow:
+    0 0 0 1px rgba(72, 221, 245, 0.2),
+    0 12px 34px rgba(72, 221, 245, 0.28);
+}
+
+.ui-button--secondary {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.ui-button--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+}
+
+.ui-button--ghost:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: transparent;
+}
+
+.ui-button--danger {
+  border-color: rgba(255, 107, 122, 0.25);
+  color: var(--danger);
+}
+
+.ui-button--danger:hover:not(:disabled) {
+  background: rgba(255, 107, 122, 0.1);
+  border-color: rgba(255, 107, 122, 0.45);
+}

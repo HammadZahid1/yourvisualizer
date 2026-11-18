@@ -1,0 +1,33 @@
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+
+.background-field {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.app-shell__grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 78%);
+}
+
+.app-shell__main {
+  flex: 1;
+  min-width: 0;
+}
