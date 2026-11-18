@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { AppShell } from './components/layout/AppShell';
 import { Header } from './components/navigation/Header';
+import { OverviewPage } from './pages/OverviewPage';
 import type { ViewId } from './types';
 
-const VIEW_TITLES: Record<ViewId, string> = {
-  overview: 'Overview',
+const PLACEHOLDER_TITLES: Record<Exclude<ViewId, 'overview'>, string> = {
   visualizer: 'Visualizer',
   explore: 'Explore',
   about: 'About',
@@ -15,11 +15,15 @@ export default function App() {
 
   return (
     <AppShell header={<Header view={view} onNavigate={setView} />}>
-      <section className="temp-content">
-        <span className="eyebrow">{VIEW_TITLES[view]}</span>
-        <h1>See what your words are made of.</h1>
-        <p className="muted">Visualize the hidden patterns inside your words.</p>
-      </section>
+      {view === 'overview' ? (
+        <OverviewPage onStart={() => setView('visualizer')} onDemo={() => setView('visualizer')} />
+      ) : (
+        <section className="temp-content">
+          <span className="eyebrow">{PLACEHOLDER_TITLES[view]}</span>
+          <h1>{PLACEHOLDER_TITLES[view]}</h1>
+          <p className="muted">This workspace is being assembled.</p>
+        </section>
+      )}
     </AppShell>
   );
 }
