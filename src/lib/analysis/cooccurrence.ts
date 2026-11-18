@@ -32,11 +32,24 @@ export function computeCooccurrence(
   const allowed = (token: Token) =>
     !token.isStopWord && token.normalized.length >= 3 && (!candidates || candidates.has(token.normalized));
 
-  for (const sentence of sentences) {
-    const inSentence = tokens.filter(
-      (token) => token.start >= sentence.start && token.start < sentence.end && allowed(token),
-    );
+  // Bucket tokens into sentences in a single pass (tokens are source-ordered).
+  const buckets: Token[][] = sentences.map(() => []);
+  let sentenceIndex = 0;
+  for (const token of tokens) {
+    while (
+      sentenceIndex < sentences.length &&
+      token.start >= (sentences[sentenceIndex]?.end ?? 0)
+    ) {
+      sentenceIndex += 1;
+    }
+    if (sentenceIndex >= sentences.length) break;
+    const sentence = sentences[sentenceIndex]!;
+    if (token.start >= sentence.start && allowed(token)) {
+      buckets[sentenceIndex]!.push(token);
+    }
+  }
 
+  for (const inSentence of buckets) {
     for (let i = 0; i < inSentence.length; i += 1) {
       const source = inSentence[i];
       if (!source) continue;
