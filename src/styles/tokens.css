@@ -1,0 +1,94 @@
+/**
+ * YourVisualizer design tokens.
+ * A restrained, laboratory-grade palette: graphite surfaces, electric cyan,
+ * soft violet, and hairline borders. Values are intentionally centralized.
+ */
+:root {
+  /* Surfaces */
+  --bg-base: #050608;
+  --bg-deep: #030406;
+  --bg-secondary: #0a0d12;
+  --bg-panel: #10141b;
+  --bg-panel-raised: #151a23;
+  --bg-inset: #0b0e14;
+  --bg-hover: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --text-primary: #f5f7fa;
+  --text-secondary: #929bab;
+  --text-muted: #626c7c;
+  --text-inverse: #050608;
+
+  /* Accents */
+  --accent-cyan: #48ddf5;
+  --accent-cyan-soft: rgba(72, 221, 245, 0.14);
+  --accent-cyan-line: rgba(72, 221, 245, 0.42);
+  --accent-violet: #9a7bff;
+  --accent-violet-soft: rgba(154, 123, 255, 0.14);
+  --accent-blue: #5b8cff;
+  --accent-blue-soft: rgba(91, 140, 255, 0.12);
+
+  /* Semantic */
+  --success: #55e6a5;
+  --warning: #f5c76a;
+  --danger: #ff6b7a;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-cyan: rgba(72, 221, 245, 0.28);
+
+  /* Glows */
+  --glow-cyan: 0 0 0 1px rgba(72, 221, 245, 0.18), 0 0 28px rgba(72, 221, 245, 0.16);
+  --glow-violet: 0 0 30px rgba(154, 123, 255, 0.18);
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 9px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 56px;
+  --space-10: 72px;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --text-hero: clamp(2.6rem, 6vw, 5.25rem);
+  --text-h1: clamp(2rem, 4vw, 3.25rem);
+  --text-h2: clamp(1.5rem, 2.6vw, 2.1rem);
+  --text-h3: 1.0625rem;
+  --text-body: 0.9375rem;
+  --text-small: 0.8125rem;
+  --text-mono: 0.6875rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 160ms;
+  --duration-normal: 280ms;
+  --duration-slow: 520ms;
+
+  /* Layout */
+  --header-height: 68px;
+  --content-max: 1440px;
+  --workspace-gap: 16px;
+
+  /* Elevation */
+  --shadow-panel: 0 18px 60px rgba(0, 0, 0, 0.42);
+  --shadow-float: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
