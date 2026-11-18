@@ -1,0 +1,125 @@
+.node-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.node-details__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.node-details__header h3 {
+  font-size: 1.25rem;
+  margin-top: 4px;
+  color: var(--accent-cyan);
+}
+
+.node-details__close {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.node-details__close:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.node-details__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.node-details__metrics div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: var(--space-3);
+  background: var(--bg-inset);
+}
+
+.node-details__metrics strong {
+  font-size: 1rem;
+  color: var(--text-primary);
+  letter-spacing: 0;
+}
+
+.node-details__metrics span {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.node-details__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.node-details__label {
+  color: var(--text-muted);
+  font-size: 0.6rem;
+}
+
+.node-details__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.node-details__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  transition:
+    border-color var(--duration-fast),
+    color var(--duration-fast);
+}
+
+.node-details__chip:hover {
+  border-color: var(--border-cyan);
+  color: var(--accent-cyan);
+}
+
+.node-details__occurrences {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.node-details__occurrences li {
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid var(--accent-violet);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  line-height: 1.55;
+}
+
+.node-details__occurrences mark {
+  background: rgba(72, 221, 245, 0.16);
+  color: var(--accent-cyan);
+  padding: 0 2px;
+  border-radius: 2px;
+}

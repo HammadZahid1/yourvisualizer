@@ -1,4 +1,5 @@
 import { WordGraph } from '@/components/graph/WordGraph';
+import { InsightsPanel } from '@/components/insights/InsightsPanel';
 import { Panel } from '@/components/ui/Panel';
 import { exportGraphPng } from '@/lib/export/image';
 import { TextEditor } from './TextEditor';
@@ -48,9 +49,11 @@ export function VisualizerWorkspace({ state }: VisualizerWorkspaceProps) {
         </Panel>
 
         <Panel className="workspace-insights" eyebrow="03 / Insights" title="Signal readout" padded={false}>
-          <div className="workspace-insights__placeholder">
-            <span className="mono">Awaiting analysis</span>
-          </div>
+          <InsightsPanel
+            analysis={state.analysis}
+            selectedWord={state.selectedWord}
+            onSelectWord={state.setSelectedWord}
+          />
         </Panel>
       </div>
     </div>
