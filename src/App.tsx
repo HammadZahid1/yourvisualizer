@@ -2,15 +2,11 @@ import { useState } from 'react';
 import { AppShell } from './components/layout/AppShell';
 import { Header } from './components/navigation/Header';
 import { VisualizerWorkspace } from './components/visualizer/VisualizerWorkspace';
+import { ExplorePage } from './pages/ExplorePage';
 import { OverviewPage } from './pages/OverviewPage';
 import { SAMPLES } from './data/samples';
 import { useVisualizerState } from './hooks/useVisualizerState';
 import type { ViewId } from './types';
-
-const PLACEHOLDER_TITLES: Record<Exclude<ViewId, 'overview' | 'visualizer'>, string> = {
-  explore: 'Explore',
-  about: 'About',
-};
 
 export default function App() {
   const [view, setView] = useState<ViewId>('overview');
@@ -28,10 +24,18 @@ export default function App() {
     <AppShell header={<Header view={view} onNavigate={setView} />}>
       {view === 'overview' && <OverviewPage onStart={start} onDemo={openDemo} />}
       {view === 'visualizer' && <VisualizerWorkspace state={visualizer} />}
-      {(view === 'explore' || view === 'about') && (
+      {view === 'explore' && (
+        <ExplorePage
+          analysis={visualizer.analysis}
+          selectedWord={visualizer.selectedWord}
+          onSelectWord={visualizer.setSelectedWord}
+          onNavigate={setView}
+        />
+      )}
+      {view === 'about' && (
         <section className="temp-content">
-          <span className="eyebrow">{PLACEHOLDER_TITLES[view]}</span>
-          <h1>{PLACEHOLDER_TITLES[view]}</h1>
+          <span className="eyebrow">About</span>
+          <h1>About</h1>
           <p className="muted">This screen is being assembled.</p>
         </section>
       )}
