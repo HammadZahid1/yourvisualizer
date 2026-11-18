@@ -66,6 +66,12 @@ export function useVisualizerState() {
     setSelectedWord(null);
   }, []);
 
+  const restoreEntry = useCallback((entry: HistoryEntry) => {
+    setText(entry.result.text);
+    setAnalysis(entry.result);
+    setSelectedWord(null);
+  }, []);
+
   return {
     text,
     analysis,
@@ -77,6 +83,7 @@ export function useVisualizerState() {
     loadSample,
     clearAll,
     resetGraph,
+    restoreEntry,
     setSelectedWord,
     setAnalysis,
   };

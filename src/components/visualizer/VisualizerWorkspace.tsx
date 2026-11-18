@@ -3,6 +3,7 @@ import { InsightsPanel } from '@/components/insights/InsightsPanel';
 import { Panel } from '@/components/ui/Panel';
 import { exportGraphPng } from '@/lib/export/image';
 import { ExportToolbar } from './ExportToolbar';
+import { SessionHistory } from './SessionHistory';
 import { TextEditor } from './TextEditor';
 import type { useVisualizerState } from '@/hooks/useVisualizerState';
 import './VisualizerWorkspace.css';
@@ -26,6 +27,12 @@ export function VisualizerWorkspace({ state }: VisualizerWorkspaceProps) {
           <ExportToolbar analysis={state.analysis} />
         </div>
       </div>
+
+      <SessionHistory
+        entries={state.history}
+        activeText={state.text}
+        onRestore={state.restoreEntry}
+      />
 
       <div className="workspace-grid">
         <TextEditor
