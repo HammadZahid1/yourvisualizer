@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { BackgroundField } from './BackgroundField';
+import { Footer } from './Footer';
 import './AppShell.css';
 
 interface AppShellProps {
@@ -19,6 +20,7 @@ export function AppShell({ header, children }: AppShellProps) {
       <main className="app-shell__main" id="main-content">
         {children}
       </main>
+      <Footer />
     </div>
   );
 }
