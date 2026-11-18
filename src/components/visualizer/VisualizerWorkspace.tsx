@@ -2,6 +2,7 @@ import { WordGraph } from '@/components/graph/WordGraph';
 import { InsightsPanel } from '@/components/insights/InsightsPanel';
 import { Panel } from '@/components/ui/Panel';
 import { exportGraphPng } from '@/lib/export/image';
+import { ExportToolbar } from './ExportToolbar';
 import { TextEditor } from './TextEditor';
 import type { useVisualizerState } from '@/hooks/useVisualizerState';
 import './VisualizerWorkspace.css';
@@ -18,9 +19,12 @@ export function VisualizerWorkspace({ state }: VisualizerWorkspaceProps) {
           <span className="eyebrow">Analysis workspace</span>
           <h1>Visualize your text.</h1>
         </div>
-        <p className="muted">
-          Everything below is computed locally from the text you provide. Nothing is uploaded.
-        </p>
+        <div className="workspace-page__intro-trailing">
+          <p className="muted">
+            Everything below is computed locally from the text you provide. Nothing is uploaded.
+          </p>
+          <ExportToolbar analysis={state.analysis} />
+        </div>
       </div>
 
       <div className="workspace-grid">
