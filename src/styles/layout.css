@@ -1,11 +1,3 @@
-.temp-header {
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  padding: 0 var(--space-7);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
 .temp-content {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -18,4 +10,10 @@
 .temp-content h1 {
   font-size: var(--text-hero);
   max-width: 16ch;
+}
+
+@media (max-width: 640px) {
+  .temp-content {
+    padding: var(--space-8) var(--space-5);
+  }
 }
